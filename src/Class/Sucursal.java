@@ -8,24 +8,33 @@ public class Sucursal {
 	private String mail;
 	
 	private int numeroDireccion;
-	private int codPostal;
-	private int cantPisos;
+	private int codigoPostal;
+	private int cantidadPisos;
 	private int telefono;
 	
 	private boolean abierto = false;
 	
+	private Piso[] pisos = new Piso[cantidadPisos]; 
 	//private ArrayList<Empleado> empleados = new ArrayList<Empleado>();
 	//private ArrayList<Inventario> inventarios = new ArrayList<Inventario>();
 	private ArrayList<Sector> sectores = new ArrayList<Sector>();
 	
-	public Sucursal(String localidad, String direccion, int numeroDireccion, int codPostal, int cantPisos, int telefono, String mail) {
+	public Sucursal(String localidad, String direccion, int numeroDireccion, int codigoPostal, int cantidadPisos, int telefono, String mail) {
 		this.localidad = localidad;
 		this.direccion = direccion;
 		this.numeroDireccion = numeroDireccion;
-		this.codPostal = codPostal;
-		this.cantPisos = cantPisos;
+		this.codigoPostal = codigoPostal;
+		this.cantidadPisos = cantidadPisos;
 		this.telefono = telefono;
-		this.mail = mail;	
+		this.mail = mail;
+		
+		creandoPisos();
+	}
+	
+	private void creandoPisos() {
+		for(int i = 0; i < pisos.length; i++) {
+			pisos[i] = new Piso(i);
+		}
 	}
 	
 	public void Abrir() {
@@ -43,4 +52,33 @@ public class Sucursal {
 	public void AñadirSector(Sector sector) {
 		sectores.add(sector);
 	}
+	
+	public String getLocalidad() {
+		return localidad;
+	}
+	
+	public String getDireccion() {
+		return direccion;
+	}
+	
+	public String getMail() {
+		return mail;
+	}
+	
+	public int getNumeroDireccion() {
+		return numeroDireccion;
+	}
+	
+	public int getCodigoPostal() {
+		return codigoPostal;
+	}
+	
+	public int getTelefono() {
+		return telefono;
+	}
+	
+	public void setSectorInPiso(int piso, Sector sector) {
+		pisos[piso].añadirSector(sector);
+	}
+
 }	
