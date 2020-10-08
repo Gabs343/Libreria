@@ -10,6 +10,7 @@ public abstract class Producto {
 	private int codigo;
 	private int cantidadPaginas;
 	private double precio;
+	private boolean abierto = false;
 	
 	public Producto(String formato, String editorial, String genero, String autor, String idioma, int edicion, int codigo, int cantidadPaginas, double precio) {
 		this.formato = formato;
@@ -22,5 +23,15 @@ public abstract class Producto {
 		this.cantidadPaginas = cantidadPaginas;
 		this.precio = precio;
 	}
+	
+	public void Abrir() {
+		
+	}
+	
+	public void pasarPagina() {
+		
+	}
+	
+	public void Cerrar() {}
 
 }

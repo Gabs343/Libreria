@@ -1,20 +1,16 @@
 package Class;
 
-import java.util.ArrayList;
-
-public class Empleado {
+public class Empleado extends Documento{
 	private String cargo;
 	private int id;
 	
-	private ArrayList<Documento> documentos = new ArrayList<Documento>();
-	
-	public Empleado(Documento documento, String cargo, int id) {
-		documentos.add(documento);
+	public Empleado(int numero, String nombre, String apellido, String sexo , int fechaNacimiento, String nacionalidad,  String cargo, int id) {
+		super(numero, nombre, apellido, sexo, fechaNacimiento, nacionalidad);
 		this.cargo = cargo;
 		this.id = id;
 	}
 	
-	public void Saludar(int numero) {
-		System.out.println("Hola mi nombre es " + documentos.get(numero).getNombre());
+	public void Saludar() {
+		System.out.println("Hola mi nombre es " + getNombre());
 	}
 }

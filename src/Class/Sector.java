@@ -15,7 +15,7 @@ public class Sector {
 	
 	public void Limpiar() {}
 	
-	public void AñadirArticulo(Articulo articulo) {
+	public void añadirArticulo(Articulo articulo) {
 		articulos.add(articulo);
 	}
 }
