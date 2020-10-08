@@ -13,4 +13,8 @@ public class Piso {
 	public void añadirSector(Sector sector) {
 		sectores.add(sector);
 	}
+	
+	public int getNumero() {
+		return numero;
+	}
 }

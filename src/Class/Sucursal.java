@@ -14,7 +14,7 @@ public class Sucursal {
 	
 	private boolean abierto = false;
 	
-	private Piso[] pisos = new Piso[cantidadPisos]; 
+	private Piso[] pisos; 
 	//private ArrayList<Empleado> empleados = new ArrayList<Empleado>();
 	//private ArrayList<Inventario> inventarios = new ArrayList<Inventario>();
 	private ArrayList<Sector> sectores = new ArrayList<Sector>();
@@ -28,13 +28,16 @@ public class Sucursal {
 		this.telefono = telefono;
 		this.mail = mail;
 		
-		creandoPisos();
+		creandoPisos(cantidadPisos);
 	}
 	
-	private void creandoPisos() {
+	private void creandoPisos(int numero) {
+		pisos = new Piso[numero];
 		for(int i = 0; i < pisos.length; i++) {
 			pisos[i] = new Piso(i);
+			System.out.println(pisos[i].getNumero());
 		}
+
 	}
 	
 	public void Abrir() {
@@ -49,7 +52,7 @@ public class Sucursal {
 		abierto = false;
 	}
 	
-	public void AñadirSector(Sector sector) {
+	public void añadirSector(Sector sector) {
 		sectores.add(sector);
 	}
 	
@@ -77,8 +80,8 @@ public class Sucursal {
 		return telefono;
 	}
 	
-	public void setSectorInPiso(int piso, Sector sector) {
-		pisos[piso].añadirSector(sector);
+	public void setSectorInPiso(int numero, Sector sector) {
+		pisos[numero].añadirSector(sector);
 	}
 
 }	

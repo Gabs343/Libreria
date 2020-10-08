@@ -9,10 +9,10 @@ public class Libreria {
 	
 	public Libreria(String nombre, Sucursal sucursal) {
 		this.nombre = nombre;
-		AñadirSucursal(sucursal);
+		añadirSucursal(sucursal);
 	}
 	
-	public void AñadirSucursal (Sucursal sucursal) {
+	public void añadirSucursal (Sucursal sucursal) {
 		sucursales.add(sucursal);
 	}
 	
