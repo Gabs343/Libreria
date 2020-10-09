@@ -10,11 +10,11 @@ public class Main {
 		
 		Sucursal gaona = new Sucursal("CABA", "Av Gaona", 1500, 318, 0, 1134398765, "test01@gmail.com");
 		
-		Sector sector1 = new Sector("Matemática", "MAT");
-		Sector sector2 = new Sector("Literatura", "LIT");
-		Sector sector3 = new Sector("Historia", "HIT");
-		Sector sector4 = new Sector("Biología", "BIO");
-		Sector sector5 = new Sector("Informática", "INT");
+		Sector matematica = new Sector("Matemática", "MAT");
+		Sector literatura = new Sector("Literatura", "LIT");
+		Sector historia = new Sector("Historia", "HIST");
+		Sector biologia = new Sector("Biología", "BIO");
+		Sector informatica = new Sector("Informática", "INFORM");
 		
 		Articulo estante1 = new Estante("Madera", "Marrón", "Rectangular", 30, 89, 60, 5);
 		Articulo estante2 = new Estante("Madera", "Marrón", "Rectangular", 30, 60, 180, 9);
@@ -22,21 +22,16 @@ public class Main {
  		Empleado bob = new Empleado(95343871, "Bob", "Gónzalez", "M", 310898, "Argentina", "Encargado", 343);
 		
 		libreria1.añadirSucursal(gaona);
-		
-		gaona.añadirSector(sector1);
-		gaona.añadirSector(sector2);
-		corrientes.añadirSector(sector3);
-		corrientes.añadirSector(sector4);
-		corrientes.añadirSector(sector5);
-		
-		sector1.añadirArticulo(estante1);
-		sector2.añadirArticulo(estante2);
-		sector3.añadirArticulo(estante2);
 	
-		corrientes.setSectorInPiso(0, sector1);
+		corrientes.setSectorInPiso(0, matematica);
+		corrientes.setSectorInPiso(0, informatica);
+		corrientes.setSectorInPiso(1, literatura);
+		corrientes.setSectorInPiso(1, historia);
 		
 		bob.Saludar();
 		libreria1.getSucursales();
+		corrientes.getSectoresInPiso(0);
+		corrientes.getSectoresInPiso(1);
 		
 	}
 
