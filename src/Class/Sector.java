@@ -18,4 +18,8 @@ public class Sector {
 	public void añadirArticulo(Articulo articulo) {
 		articulos.add(articulo);
 	}
+	
+	public String getCodigo() {
+		return codigo;
+	}
 }
