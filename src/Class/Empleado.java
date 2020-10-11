@@ -22,6 +22,10 @@ public class Empleado extends Documento{
 		sucursal.cambiarEstado(empleado, true);
 	}
 	
+	public void cerrarSucursal(Sucursal sucursal, Empleado empleado) {
+		sucursal.cambiarEstado(empleado, false);
+	}
+	
 	public void entrarSucursal(Sucursal sucursal, Empleado empleado) {
 		if(sucursal.isOpen()) {
 			sucursal.setEmpleado(empleado);
@@ -29,6 +33,11 @@ public class Empleado extends Documento{
 		} else {
 			System.out.println("Esta cerrado");
 		}
+	}
+	
+	public void salirSucursal(Sucursal sucursal, Empleado empleado) {
+		sucursal.removeEmpleado(empleado);
+		System.out.println("Saliste de la sucursal " + sucursal.getDireccion());
 	}
 	
 	public void searchProductoInEstante(Estante estante, String nombreProducto) {
@@ -52,6 +61,13 @@ public class Empleado extends Documento{
 		}
 	
 	}
+	
+	public void changeToPiso(Sucursal sucursal, Empleado empleado, int piso) {
+		sucursal.removeEmpleadoInPiso(empleado);
+		sucursal.setEmpleadoInPiso(empleado, piso);
+		System.out.println("Ingresaste al piso " + piso);
+	}
+	
 	public void getNombreOfProductos() {
 		if(productos.size() == 0) {
 			System.out.println("No tienes productos en tu inventario");

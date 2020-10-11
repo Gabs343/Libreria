@@ -57,13 +57,25 @@ public class Sucursal {
 
 	public void setEmpleado(Empleado empleado) {
 		empleados.add(empleado);
+		pisos[0].setEmpleado(empleado);
 	}
-	
+
 	public void removeEmpleado(Empleado empleado) {
 		for(int i = 0; i < empleados.size(); i++) {
 			if(empleados.get(i).getNombre().equals(empleado.getNombre())) {
 				empleados.remove(i);
+				
 			}
+		}
+	}
+	
+	public void setEmpleadoInPiso(Empleado empleado, int numeroPiso) {
+		pisos[numeroPiso].setEmpleado(empleado);
+	}
+	
+	public void removeEmpleadoInPiso(Empleado empleado) {
+		for(int i = 0; i < pisos.length; i++) {
+			pisos[i].removeEmpleado(empleado);
 		}
 	}
 	
@@ -96,4 +108,8 @@ public class Sucursal {
 		pisos[numeroPiso].getSector();	
 	}
 	
+	public void getEmpleadosInPiso(int numeroPiso) {
+		System.out.println("Piso: " + pisos[numeroPiso].getNumero());
+		pisos[numeroPiso].getEmpleado();
+	}
 }	

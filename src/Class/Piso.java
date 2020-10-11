@@ -15,6 +15,18 @@ public class Piso {
 		sectores.add(sector);
 	}
 	
+	public void setEmpleado(Empleado empleado) {
+		empleados.add(empleado);
+	}
+	
+	public void removeEmpleado(Empleado empleado) {
+		for(int i = 0; i < empleados.size(); i++) {
+			if(empleados.get(i).getNombre().equals(empleado.getNombre())) {
+				empleados.remove(i);	
+			}
+		}
+	}
+	
 	public int getNumero() {
 		return numero;
 	}
@@ -24,4 +36,11 @@ public class Piso {
 			System.out.println(sector.getCodigo());
 		});
 	}
+	
+	public void getEmpleado() {
+		empleados.stream().forEach((empleado) -> {
+			System.out.println(empleado.getNombre());
+		});
+	}
+	
 }
