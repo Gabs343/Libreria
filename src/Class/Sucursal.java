@@ -39,19 +39,33 @@ public class Sucursal {
 
 	}
 	
-	public void Abrir() {
-		abierto = true;
+	public boolean isOpen() {
+		return abierto;
 	}
 	
-	public void Cerrar() {
-		abierto = false;
+	public void cambiarEstado(Empleado empleado, boolean abierto) {
+		if(empleado.getCargo().equalsIgnoreCase("Encargado")) {
+			this.abierto = abierto;
+		}else {
+			System.out.println("No eres el encargado");
+		}
 	}
-	
 	
 	public void setSectorInPiso(int numero, Sector sector) {
-		pisos[numero].añadirSector(sector);
+		pisos[numero].setSector(sector);
 	}
 
+	public void setEmpleado(Empleado empleado) {
+		empleados.add(empleado);
+	}
+	
+	public void removeEmpleado(Empleado empleado) {
+		for(int i = 0; i < empleados.size(); i++) {
+			if(empleados.get(i).getNombre().equals(empleado.getNombre())) {
+				empleados.remove(i);
+			}
+		}
+	}
 	
 	public String getLocalidad() {
 		return localidad;
