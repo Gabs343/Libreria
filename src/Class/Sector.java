@@ -13,8 +13,6 @@ public class Sector {
 		this.codigo = codigo;
 	}
 	
-	public void Limpiar() {}
-	
 	public void añadirArticulo(Articulo articulo) {
 		articulos.add(articulo);
 	}
