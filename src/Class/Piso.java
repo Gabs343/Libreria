@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Piso {
 	private int numero;
 	private ArrayList<Sector> sectores = new ArrayList<Sector>();
-	private ArrayList<Empleado> empleados = new ArrayList<Empleado>();
+	private ArrayList<Persona> personas = new ArrayList<Persona>();
 	
 	public Piso(int numero) {
 		this.numero = numero;
@@ -15,14 +15,14 @@ public class Piso {
 		sectores.add(sector);
 	}
 	
-	public void setEmpleado(Empleado empleado) {
-		empleados.add(empleado);
+	public void setPersona(Persona persona) {
+		personas.add(persona);
 	}
 	
-	public void removeEmpleado(Empleado empleado) {
-		for(int i = 0; i < empleados.size(); i++) {
-			if(empleados.get(i).getNombre().equals(empleado.getNombre())) {
-				empleados.remove(i);	
+	public void removePersona(Persona persona) {
+		for(int i = 0; i < personas.size(); i++) {
+			if(personas.get(i).getNombre().equals(persona.getNombre())) {
+				personas.remove(i);	
 			}
 		}
 	}
@@ -37,9 +37,9 @@ public class Piso {
 		});
 	}
 	
-	public void getEmpleado() {
-		empleados.stream().forEach((empleado) -> {
-			System.out.println(empleado.getNombre());
+	public void getPersona() {
+		personas.stream().forEach((persona) -> {
+			System.out.println(persona.getNombre());
 		});
 	}
 	

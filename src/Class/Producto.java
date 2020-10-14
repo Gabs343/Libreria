@@ -11,6 +11,7 @@ public abstract class Producto {
 	private int cantidadPaginas;
 	private double precio;
 	private boolean abierto = false;
+	private boolean comprado = false;
 	
 	public Producto(String nombre, String formato, String editorial, String genero, String autor, String idioma, int edicion, int cantidadPaginas, double precio) {
 		this.nombre = nombre;
@@ -42,6 +43,10 @@ public abstract class Producto {
 	
 	public String getNombre(){
 		return nombre;
+	}
+	
+	public boolean isBought() {
+		return comprado;
 	}
 
 }
