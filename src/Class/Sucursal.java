@@ -15,7 +15,7 @@ public class Sucursal {
 	private boolean abierto = false;
 	
 	private Piso[] pisos; 
-	private ArrayList<Empleado> empleados = new ArrayList<Empleado>();
+	private ArrayList<Persona> personas = new ArrayList<Persona>();
 	//private ArrayList<Inventario> inventarios = new ArrayList<Inventario>();
 	
 	
@@ -55,27 +55,27 @@ public class Sucursal {
 		pisos[numero].setSector(sector);
 	}
 
-	public void setEmpleado(Empleado empleado) {
-		empleados.add(empleado);
-		pisos[0].setEmpleado(empleado);
+	public void setPersona(Persona persona) {
+		personas.add(persona);
+		pisos[0].setPersona(persona);
 	}
 
-	public void removeEmpleado(Empleado empleado) {
-		for(int i = 0; i < empleados.size(); i++) {
-			if(empleados.get(i).getNombre().equals(empleado.getNombre())) {
-				empleados.remove(i);
+	public void removePersona(Persona persona) {
+		for(int i = 0; i < personas.size(); i++) {
+			if(personas.get(i).getNombre().equals(persona.getNombre())) {
+				personas.remove(i);
 				
 			}
 		}
 	}
 	
-	public void setEmpleadoInPiso(Empleado empleado, int numeroPiso) {
-		pisos[numeroPiso].setEmpleado(empleado);
+	public void setPersonaInPiso(Persona persona, int numeroPiso) {
+		pisos[numeroPiso].setPersona(persona);
 	}
 	
-	public void removeEmpleadoInPiso(Empleado empleado) {
+	public void removePersonaInPiso(Persona persona) {
 		for(int i = 0; i < pisos.length; i++) {
-			pisos[i].removeEmpleado(empleado);
+			pisos[i].removePersona(persona);
 		}
 	}
 	
@@ -110,6 +110,6 @@ public class Sucursal {
 	
 	public void getEmpleadosInPiso(int numeroPiso) {
 		System.out.println("Piso: " + pisos[numeroPiso].getNumero());
-		pisos[numeroPiso].getEmpleado();
+		pisos[numeroPiso].getPersona();
 	}
 }	

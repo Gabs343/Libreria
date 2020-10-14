@@ -1,63 +1,28 @@
 package Class;
 import java.util.ArrayList;
 
-public class Publico implements metodoPago {
+public class Publico extends Persona{
 	
 	public String gusto;
 	
-	ArrayList <Producto> compras = new ArrayList <>();
-	ArrayList <Billete> billete = new ArrayList <>();
-	ArrayList <Tarjeta> tarjeta = new ArrayList <>();
-	ArrayList <Producto> bolsa = new ArrayList <>();
-	ArrayList <Comprobante> comprobante = new ArrayList<>();
+	ArrayList <Billete> billete = new ArrayList <Billete>();
+	ArrayList <Tarjeta> tarjeta = new ArrayList <Tarjeta>();
+	ArrayList <Comprobante> comprobante = new ArrayList<Comprobante>();
+	
+	public Publico(int numero, String nombre, String apellido, String sexo , int fechaNacimiento, String nacionalidad, String gusto) {
+		super(numero, nombre, apellido, sexo, fechaNacimiento, nacionalidad);
+		this.gusto = gusto;
+	}
 	
 	public String preguntar(Empleado empleado, String mensaje) {
-		
+		return "hola";
 	}
 	
 	public Producto entregar(Producto producto) {
-		
+		return producto;
 	}
-	
-	@Override
-	public Billete entregar(Billete billete) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Tarjeta entregar(Tarjeta tarjeta) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void recibir(Billete billete) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void recibir(Tarjeta tarjeta) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 	
 	public void recibir(Producto producto, Ticket ticket) {
-		
-	}
-	
-	
-	public void entrar(Sucursal sucursal) {
-		
-	}
-	
-	public void salir(Sucursal sucursal) {
-		
-	}
-	
-	public void buscar(Producto producto) {
 		
 	}
 	
