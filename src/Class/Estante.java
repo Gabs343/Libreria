@@ -17,14 +17,15 @@ public class Estante extends Articulo{
 	}
 	
 	
-	public boolean findingProducto(String nombre) {
+	public boolean searchingProducto(String nombre) {
+		boolean condicion = false;
 		for(int i = 0; i < productos.size(); i++) {
 			if(productos.get(i).getNombre().equalsIgnoreCase(nombre)) {
 				indexOfProducto = i;
-				return true;
+				condicion = true;
 			}
 		}
-		return false;
+		return condicion;
 	}
 	
 	public Producto getProducto() {

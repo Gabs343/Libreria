@@ -7,4 +7,9 @@ public class Billete {
 	
 	public String color;
 	
+	public Billete(int valor, String color) {
+		this.valor = valor;
+		this.color = color;
+	}
+	
 }
