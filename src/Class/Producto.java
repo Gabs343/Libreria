@@ -45,6 +45,10 @@ public abstract class Producto {
 		return nombre;
 	}
 	
+	public void setPurchase() {
+		comprado = true;
+	}
+	
 	public boolean isBought() {
 		return comprado;
 	}

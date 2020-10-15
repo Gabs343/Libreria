@@ -9,8 +9,12 @@ public abstract class Persona {
 	private String nacionalidad;
 	private String sexo;
 	private int numero;
+	private int indexOfItem;
 	
-	private ArrayList<Producto> inventario = new ArrayList<Producto>();
+	protected ArrayList<Producto> inventario = new ArrayList<Producto>();
+	private ArrayList <Billete> billetera = new ArrayList <Billete>();
+	private ArrayList <Tarjeta> tarjetas = new ArrayList <Tarjeta>();
+	private ArrayList <Comprobante> comprobantes = new ArrayList<Comprobante>();
 	
 	public Persona(int numero, String nombre, String apellido, String sexo, int fechaNacimiento, String nacionalidad) {
 		this.numero = numero;
@@ -48,8 +52,8 @@ public abstract class Persona {
 	}
 	
 	public void searchProductoInEstante(Estante estante, String nombreProducto) {
-		if(estante.findingProducto(nombreProducto)) {
-			inventario.add(estante.getProducto());
+		if(estante.searchingProducto(nombreProducto)) {
+			setProducto(estante.getProducto());
 			System.out.println("Se añadio el producto " + nombreProducto + " en tu inventario");
 		}else {
 			System.out.println("No se encontro el producto " + nombreProducto);
@@ -84,6 +88,39 @@ public abstract class Persona {
 		
 			});
 		}
+	}
+	
+	public void setProducto(Producto producto) {
+		inventario.add(producto);
+	}
+	
+	public void setBillete(Billete billete) {
+		billetera.add(billete);
+	}
+	
+	public void setTarjeta(Tarjeta tarjeta) {
+		tarjetas.add(tarjeta);
+	}
+	
+	public void setComprobante(Comprobante comprobante) {
+		comprobantes.add(comprobante);
+	}
+	
+	public Producto getProducto() {
+		Producto productoCopy = inventario.get(indexOfItem);
+		inventario.remove(indexOfItem);
+		return productoCopy;
+	}
+	
+	public boolean searchingProducto(String nombre) {
+		boolean condicion = false;
+		for(int i = 0; i < inventario.size(); i++) {
+			if(inventario.get(i).getNombre().equalsIgnoreCase(nombre)) {
+				indexOfItem = i;
+				condicion = true;
+			}
+		}
+		return condicion;
 	}
 	
 	public String getNombre() {
