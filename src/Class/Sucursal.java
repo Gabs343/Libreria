@@ -62,7 +62,7 @@ public class Sucursal {
 
 	public void removePersona(Persona persona) {
 		for(int i = 0; i < personas.size(); i++) {
-			if(personas.get(i).getNombre().equals(persona.getNombre())) {
+			if(personas.get(i).getNombre().equalsIgnoreCase(persona.getNombre())) {
 				personas.remove(i);
 				
 			}

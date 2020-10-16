@@ -2,14 +2,24 @@ package Class;
 
 import java.util.ArrayList;
 
-public class Estante extends Articulo{
-	private int separaciones;
+public class Estante {
+	private String material;
+	private String color;
+	private String forma;
+	private double ancho;
+	private double largo;
+	private double profundidad;
 	private int indexOfProducto;
+	
 	private ArrayList<Producto> productos = new ArrayList<Producto>();
 	
-	public Estante(String material, String color, String forma, double profundidad, double ancho, double altura, int separaciones) {
-		super(material, color, forma, profundidad, ancho, altura);
-		this.separaciones = separaciones;
+	public Estante(String material, String color, String forma, double ancho, double largo, double profundidad) {
+		this.material = material;
+		this.color = color; 
+		this.forma = forma;
+		this.ancho = ancho;
+		this.largo = largo;
+		this.profundidad = profundidad;
 	}
 	
 	public void setProducto(Producto producto) {
@@ -33,5 +43,5 @@ public class Estante extends Articulo{
 		productos.remove(indexOfProducto);
 		return productoCopy;
 	}
-	
+
 }

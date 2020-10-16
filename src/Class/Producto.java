@@ -10,7 +10,6 @@ public abstract class Producto {
 	private int edicion;
 	private int cantidadPaginas;
 	private double precio;
-	private boolean abierto = false;
 	private boolean comprado = false;
 	
 	public Producto(String nombre, String formato, String editorial, String genero, String autor, String idioma, int edicion, int cantidadPaginas, double precio) {
@@ -25,20 +24,12 @@ public abstract class Producto {
 		this.precio = precio;
 	}
 	
-	public void Abrir() {
-		abierto = true;
-	}
-	
 	public void pasarPagina(int numeroDePagina) {
 		if(numeroDePagina > cantidadPaginas) {
 			System.out.println("No hay página " + numeroDePagina);
 		}else {
 			System.out.println("Página " + numeroDePagina);
 		}
-	}
-	
-	public void Cerrar() {
-		abierto = false;
 	}
 	
 	public String getNombre(){

@@ -10,7 +10,8 @@ public class Main {
 		Sucursal corrientes = new Sucursal("CABA", "Av Corrientes", 2500, 320, 1, 1134398765, "test02@gmail.com");
 		Libreria libreria1 = new Libreria("La Libreria", corrientes);
 		
-		Empleado bob = new Empleado(95343871, "Bob", "Gónzalez", "M", 310898, "Argentina", "Encargado", 343);
+		Empleado bob = new Empleado("Bob", "Gónzalez", "Encargado", 343);
+		Publico carlos = new Publico("Carlos", "Lopez", "Literatura");
 		
 		bob.abrirSucursal(corrientes, bob);
 		
@@ -21,8 +22,8 @@ public class Main {
 			Sector biologia = new Sector("Biología", "BIO");
 			Sector informatica = new Sector("Informática", "INFORM");
 			
-			Estante estante1 = new Estante("Madera", "Marrón", "Rectangular", 30, 89, 60, 5);
-			Estante estante2 = new Estante("Madera", "Marrón", "Rectangular", 30, 60, 180, 9);
+			Estante estante1 = new Estante("Madera", "Marrón", "Rectangular", 30, 89, 60);
+			Estante estante2 = new Estante("Madera", "Marrón", "Rectangular", 30, 60, 180);
 			
 			corrientes.setSectorInPiso(0, matematica);
 			corrientes.setSectorInPiso(0, informatica);
@@ -31,20 +32,22 @@ public class Main {
 			
 			Producto libro1 = new Libro("Cuentos de amor, de locura y muerte", "Planeta", "PaperBack", "Drama", "Horacio Quiroga", "Español", 1, 137, 500);
 			
-			literatura.añadirArticulo(estante1);
+			literatura.añadirEstante(estante1);
 			estante1.setProducto(libro1);
 			
 			bob.entrarSucursal(corrientes, bob);
+			carlos.entrarSucursal(corrientes, carlos);
 			
 			corrientes.getSectoresInPiso(0);
 			
-			bob.changeToPiso(corrientes, bob, 1);
+			carlos.changeToPiso(corrientes, bob, 1);
 			
 			corrientes.getSectoresInPiso(1);
 			
-			bob.searchProductoInEstante(estante1, "Cuentos de amor, de locura y muerte");
-			bob.savingProductoInEstante(estante1, "Cuentos de amor, de locura y muerte");
-			bob.changeToPiso(corrientes, bob, 0);
+			carlos.searchProductoInEstante(estante1, "Cuentos de amor, de locura y muerte");
+			carlos.savingProductoInEstante(estante1, "Cuentos de amor, de locura y muerte");
+			carlos.changeToPiso(corrientes, bob, 0);
+			carlos.salirSucursal(corrientes, carlos);
 			bob.salirSucursal(corrientes, bob);
 			bob.cerrarSucursal(corrientes, bob);
 		}
