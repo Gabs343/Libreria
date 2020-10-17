@@ -6,8 +6,7 @@ public class Caja {
 	
 	public String metodoDePago;
 	public boolean abierto;
-
-	ArrayList<Ticket> tickets = new ArrayList<>();
+	
 	ArrayList<Billete> billetes = new ArrayList<>();
 	
 	public void abrirCaja() {

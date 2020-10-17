@@ -6,15 +6,15 @@ public class Sector {
 	private String nombre;
 	private String codigo;
 	
-	private ArrayList<Articulo> articulos = new ArrayList<Articulo>();
+	private ArrayList<Estante> estantes = new ArrayList<Estante>();
 	
 	public Sector(String nombre, String codigo) {
 		this.nombre = nombre;
 		this.codigo = codigo;
 	}
 	
-	public void añadirArticulo(Articulo articulo) {
-		articulos.add(articulo);
+	public void añadirEstante(Estante estante) {
+		estantes.add(estante);
 	}
 	
 	public String getCodigo() {
