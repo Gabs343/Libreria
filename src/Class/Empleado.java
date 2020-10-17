@@ -1,5 +1,7 @@
 package Class;
 
+import java.util.Random;
+
 public class Empleado implements Persona{
 	private String nombre;
 	private String apellido;
@@ -13,7 +15,7 @@ public class Empleado implements Persona{
 		this.id = id;
 	}
 	
-	public void Saludar() {
+	public void saludar() {
 		System.out.println("Hola mi nombre es " + nombre);
 	}
 	
@@ -28,7 +30,7 @@ public class Empleado implements Persona{
 	public void entrarSucursal(Sucursal sucursal, Persona persona) {
 		if(sucursal.isOpen()) {
 			sucursal.setPersona(persona);
-			System.out.println("Entraste a la sucursal de " + sucursal.getDireccion());
+			System.out.println(nombre + " entro a la sucursal de " + sucursal.getDireccion());
 		} else {
 			System.out.println("Esta cerrado");
 		}
@@ -36,17 +38,42 @@ public class Empleado implements Persona{
 	
 	public void salirSucursal(Sucursal sucursal, Persona persona) {
 		sucursal.removePersona(persona);
-		System.out.println("Saliste de la sucursal " + sucursal.getDireccion());	
+		System.out.println(nombre + " Salio de la sucursal " + sucursal.getDireccion());	
 	}
 	
 	public void changeToPiso(Sucursal sucursal, Persona persona, int piso) {
 		sucursal.removePersonaInPiso(persona);
 		sucursal.setPersonaInPiso(persona, piso);
-		System.out.println("Ingresaste al piso " + piso);
+		System.out.println(nombre + " ingreso al piso " + piso);
 	}
 	
 	
-	public void Cobrar(Publico publico, String nombreProducto) {
+	public void cobrar(Publico publico) {
+		double precioTotal = 0;
+		for(int i = 0; i < publico.getInventario().size(); i++) {
+			precioTotal += publico.getInventario().get(i).getPrecio();
+		}
+		
+		Tarjeta tarjeta = publico.getTarjeta();
+		
+		if(tarjeta.pasarTarjeta(precioTotal)) {
+			System.out.println(nombre + " le cobro a " + publico.getNombre() + " con exito");
+			for(int i = 0; i < publico.getInventario().size(); i++) {
+				publico.getInventario().get(i).setPurchase();
+			}
+			
+			Random rnd = new Random();
+			int serial = rnd.nextInt(9000);
+			
+			String nombreCompleto = publico.getApellido() + " " + publico.getNombre();
+			
+			publico.setComprobante(new Comprobante(serial, nombreCompleto, 1, tarjeta.getTipo(), precioTotal));
+			
+		}else {
+			System.out.println("La tarjeta no paso");
+		}
+	
+		
 		
 	}
 	

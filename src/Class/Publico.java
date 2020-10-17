@@ -1,5 +1,6 @@
 package Class;
 
+import java.util.List;
 import java.util.ArrayList;
 
 public class Publico implements Persona{
@@ -7,11 +8,11 @@ public class Publico implements Persona{
 	private String apellido;
 	private String gusto;
 	private int indexOfItem;
+	private Tarjeta tarjeta;
 	
-	private ArrayList <Producto> inventario = new ArrayList<Producto>();
-	private ArrayList <Billete> billetera = new ArrayList<Billete>();
-	private ArrayList <Tarjeta> tarjetas = new ArrayList<Tarjeta>();
-	private ArrayList <Comprobante> comprobantes = new ArrayList<Comprobante>();
+	private List <Producto> inventario = new ArrayList<Producto>();
+	private List <Billete> billetera = new ArrayList<Billete>();
+	private List <Comprobante> comprobantes = new ArrayList<Comprobante>();
 	
 	public Publico(String nombre, String apellido, String gusto) {
 		this.nombre = nombre;
@@ -19,10 +20,26 @@ public class Publico implements Persona{
 		this.gusto = gusto;
 	}
 	
+	public void setProducto(Producto producto) {
+		inventario.add(producto);
+	}
+	
+	public void setBillete(Billete billete) {
+		billetera.add(billete);
+	}
+	
+	public void setTarjeta(Tarjeta tarjeta) {
+		this.tarjeta = tarjeta; 
+	}
+	
+	public void setComprobante(Comprobante comprobante) {
+		comprobantes.add(comprobante);
+	}
+	
 	public void entrarSucursal(Sucursal sucursal, Persona persona) {
 		if(sucursal.isOpen()) {
 			sucursal.setPersona(persona);
-			System.out.println("Entraste a la sucursal de " + sucursal.getDireccion());
+			System.out.println(nombre + " entro a la sucursal de " + sucursal.getDireccion());
 		} else {
 			System.out.println("Esta cerrado");
 		}
@@ -38,9 +55,9 @@ public class Publico implements Persona{
 		
 		if(productosComprados == inventario.size()) {
 			sucursal.removePersona(persona);
-			System.out.println("Saliste de la sucursal " + sucursal.getDireccion());
+			System.out.println(nombre + " salio de la sucursal " + sucursal.getDireccion());
 		}else {
-			System.out.println("Tienes productos sin comprar");
+			System.out.println(nombre + " tiene productos sin comprar");
 		}
 		
 	}
@@ -48,33 +65,29 @@ public class Publico implements Persona{
 	public void changeToPiso(Sucursal sucursal, Persona persona, int piso) {
 		sucursal.removePersonaInPiso(persona);
 		sucursal.setPersonaInPiso(persona, piso);
-		System.out.println("Ingresaste al piso " + piso);
-	}
-	
-	
-	public void setProducto(Producto producto) {
-		inventario.add(producto);
-	}
-	
-	public void setBillete(Billete billete) {
-		billetera.add(billete);
-	}
-	
-	public void setTarjeta(Tarjeta tarjeta) {
-		tarjetas.add(tarjeta);
-	}
-	
-	public void setComprobante(Comprobante comprobante) {
-		comprobantes.add(comprobante);
+		System.out.println(nombre + " ingreso al piso " + piso);
 	}
 	
 	public void searchProductoInEstante(Estante estante, String nombreProducto) {
 		if(estante.searchingProducto(nombreProducto)) {
 			setProducto(estante.getProducto());
-			System.out.println("Se añadio el producto " + nombreProducto + " en tu inventario");
+			System.out.println(nombre + " añadio el producto " + nombreProducto + " en su inventario");
 		}else {
-			System.out.println("No se encontro el producto " + nombreProducto);
+			System.out.println(nombre +" no encontro el producto " + nombreProducto + "en el estante");
 		}
+	}
+	
+	public void savingProductoInEstante(Estante estante, String nombreProducto) {
+		for(int i = 0; i < inventario.size(); i++) {
+			if(inventario.get(i).getNombre().equalsIgnoreCase(nombreProducto)) {
+				estante.setProducto(inventario.get(i));
+				inventario.remove(i);
+				System.out.println(nombre + " guardo el producto " + nombreProducto + " en el estante");
+			}else {
+				System.out.println(nombre + " no tiene el producto " + nombreProducto);
+			}
+		}
+	
 	}
 	
 	public boolean searchingProducto(String nombre) {
@@ -88,22 +101,9 @@ public class Publico implements Persona{
 		return condicion;
 	}
 	
-	public void savingProductoInEstante(Estante estante, String nombre) {
-		for(int i = 0; i < inventario.size(); i++) {
-			if(inventario.get(i).getNombre().equalsIgnoreCase(nombre)) {
-				estante.setProducto(inventario.get(i));
-				inventario.remove(i);
-				System.out.println("Se guardo el producto " + nombre + " en el estante");
-			}else {
-				System.out.println("No tienes el producto " + nombre);
-			}
-		}
-	
-	}
-	
 	public void getNombreOfProductos() {
 		if(inventario.size() == 0) {
-			System.out.println("No tienes productos en tu inventario");
+			System.out.println(nombre + " no tiene productos en su inventario");
 		}else {
 			inventario.stream().forEach((producto) -> {
 				System.out.println(producto.getNombre());	
@@ -118,7 +118,14 @@ public class Publico implements Persona{
 		return productoCopy;
 	}
 	
-
+	public List<Producto> getInventario(){
+		return this.inventario;
+	}
+	
+	public Tarjeta getTarjeta() {
+		return tarjeta;
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}
