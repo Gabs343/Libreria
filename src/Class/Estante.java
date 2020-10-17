@@ -39,9 +39,9 @@ public class Estante {
 	}
 	
 	public Producto getProducto() {
-		Producto productoCopy = productos.get(indexOfProducto);
+		Producto productoEnviado = productos.get(indexOfProducto);
 		productos.remove(indexOfProducto);
-		return productoCopy;
+		return productoEnviado;
 	}
 
 }

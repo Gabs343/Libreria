@@ -38,7 +38,7 @@ public class Empleado implements Persona{
 	
 	public void salirSucursal(Sucursal sucursal, Persona persona) {
 		sucursal.removePersona(persona);
-		System.out.println(nombre + " Salio de la sucursal " + sucursal.getDireccion());	
+		System.out.println(nombre + " salio de la sucursal " + sucursal.getDireccion());	
 	}
 	
 	public void changeToPiso(Sucursal sucursal, Persona persona, int piso) {
@@ -48,33 +48,72 @@ public class Empleado implements Persona{
 	}
 	
 	
-	public void cobrar(Publico publico) {
-		double precioTotal = 0;
-		for(int i = 0; i < publico.getInventario().size(); i++) {
-			precioTotal += publico.getInventario().get(i).getPrecio();
+	public void cobrar(Sucursal sucursal, Publico publico) {
+		System.out.println("1. Efectivo, 2. Tarjeta");
+		int ans = 2;
+		switch(ans) {
+		case 1:
+			metodoPagoEfectivo(publico);
+			sucursal.getCaja().changeEstado(true);
+			sucursal.getCaja().ingresar(getPrecioTotal(publico));
+			sucursal.getCaja().changeEstado(false);
+			break;
+		case 2:
+			metodoPagoTarjeta(publico, publico.getTarjeta());
+
+			break;
+		default:
+			System.out.println("Debes elegir el método de pago");
+			break;	
 		}
 		
-		Tarjeta tarjeta = publico.getTarjeta();
-		
-		if(tarjeta.pasarTarjeta(precioTotal)) {
+	}
+	
+	private void metodoPagoEfectivo(Publico publico) {
+		if(publico.getSaldo() >= getPrecioTotal(publico)) {
+			publico.descontarSaldo(getPrecioTotal(publico));
+			escanearProductos(publico);
+		}else {
+			System.out.println(publico.getNombre() + " no tiene suficiente saldo");
+		}
+	}
+	
+	private void metodoPagoTarjeta(Publico publico, Tarjeta tarjeta) {
+		if(tarjeta.pasarTarjeta(getPrecioTotal(publico))) {
 			System.out.println(nombre + " le cobro a " + publico.getNombre() + " con exito");
-			for(int i = 0; i < publico.getInventario().size(); i++) {
-				publico.getInventario().get(i).setPurchase();
-			}
 			
-			Random rnd = new Random();
-			int serial = rnd.nextInt(9000);
+			escanearProductos(publico);
 			
-			String nombreCompleto = publico.getApellido() + " " + publico.getNombre();
-			
-			publico.setComprobante(new Comprobante(serial, nombreCompleto, 1, tarjeta.getTipo(), precioTotal));
+			crearComprobante(publico, tarjeta);
 			
 		}else {
 			System.out.println("La tarjeta no paso");
-		}
+		}	
+	}
 	
+	private double getPrecioTotal(Publico publico) {
+		double precioTotal = 0;
+		for(int i = 0; i < publico.getInventario().size(); i++) {
+			if(!publico.getInventario().get(i).isBought()) {
+				precioTotal += publico.getInventario().get(i).getPrecio();
+			}
+		}
+		return precioTotal;
+	}
+	
+	private void escanearProductos(Publico publico) {
+		for(int i = 0; i < publico.getInventario().size(); i++) {
+			publico.getInventario().get(i).setPurchase();
+		}
+	}
+	
+	private void crearComprobante(Publico publico, Tarjeta tarjeta) {
+		Random rnd = new Random();
+		int serial = rnd.nextInt(9000);
 		
+		String nombreCompleto = publico.getApellido() + " " + publico.getNombre();
 		
+		publico.setComprobante(new Comprobante(serial, nombreCompleto, 1, tarjeta.getTipo(), getPrecioTotal(publico)));
 	}
 	
 	public String getCargo() {
