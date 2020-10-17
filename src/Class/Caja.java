@@ -1,36 +1,26 @@
 package Class;
 
-import java.util.ArrayList;
 
 public class Caja {
 	
-	public String metodoDePago;
-	public boolean abierto;
+	private double saldo = 0;
+	private boolean abierto;
 	
-	ArrayList<Billete> billetes = new ArrayList<>();
+	public void changeEstado(boolean abierto) {
+		this.abierto = abierto;
+	}
+
 	
-	public void abrirCaja() {
-		
+	public void ingresar(double precio) {
+		saldo += precio;
 	}
 	
-	public void cobrar() {
-		
-	}
 	
-	public void ingresar() {
-		
-	}
-	
-	public void sacar() {
-		
-	}
 	
 	public void calcular() {
 		
 	}
 	
-	public void cerrarCaja() {
-		
-	}
+
 	
 }

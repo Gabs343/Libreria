@@ -9,23 +9,20 @@ public class Publico implements Persona{
 	private String gusto;
 	private int indexOfItem;
 	private Tarjeta tarjeta;
+	private double saldo;
 	
 	private List <Producto> inventario = new ArrayList<Producto>();
-	private List <Billete> billetera = new ArrayList<Billete>();
 	private List <Comprobante> comprobantes = new ArrayList<Comprobante>();
 	
-	public Publico(String nombre, String apellido, String gusto) {
+	public Publico(String nombre, String apellido, String gusto, double saldo) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.gusto = gusto;
+		this.saldo = saldo;
 	}
 	
 	public void setProducto(Producto producto) {
 		inventario.add(producto);
-	}
-	
-	public void setBillete(Billete billete) {
-		billetera.add(billete);
 	}
 	
 	public void setTarjeta(Tarjeta tarjeta) {
@@ -106,10 +103,23 @@ public class Publico implements Persona{
 			System.out.println(nombre + " no tiene productos en su inventario");
 		}else {
 			inventario.stream().forEach((producto) -> {
-				System.out.println(producto.getNombre());	
+			System.out.println(producto.getNombre());	
 		
 			});
 		}
+	}
+	
+	public void descontarSaldo(double precio) {
+		saldo -= precio;
+	}
+	
+	public void consultarCuentaTarjeta() {
+		System.out.println(nombre + " tiene un saldo de " + tarjeta.getSaldo() + " en la tarjeta");
+	}
+	
+	public void botarComprobante(int index) {
+		comprobantes.remove(index);
+		System.out.println(nombre + " elimino el comprobante");
 	}
 	
 	public Producto getProducto() {
@@ -132,6 +142,10 @@ public class Publico implements Persona{
 
 	public String getApellido() {
 		return apellido;
+	}
+	
+	public double getSaldo() {
+		return saldo;
 	}
 	
 	

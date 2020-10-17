@@ -11,7 +11,7 @@ public class Main {
 		Libreria libreria1 = new Libreria("La Libreria", corrientes);
 		
 		Empleado bob = new Empleado("Bob", "Gónzalez", "Encargado", 343);
-		Publico carlos = new Publico("Carlos", "Lopez", "Literatura");
+		Publico carlos = new Publico("Carlos", "Lopez", "Literatura", 0);
 		
 		bob.abrirSucursal(corrientes, bob);
 		
@@ -25,27 +25,27 @@ public class Main {
 			Estante estante1 = new Estante("Madera", "Marrón", "Rectangular", 30, 89, 60);
 			Estante estante2 = new Estante("Madera", "Marrón", "Rectangular", 30, 60, 180);
 			
+			corrientes.setSectorInPiso(0, caja);
 			corrientes.setSectorInPiso(0, matematica);
 			corrientes.setSectorInPiso(0, informatica);
 			corrientes.setSectorInPiso(1, literatura);
 			corrientes.setSectorInPiso(1, historia);
 			
-			Producto libro1 = new Libro("Cuentos de amor, de locura y muerte", "Planeta", "PaperBack", "Drama", "Horacio Quiroga", "Español", 1, 500.0);
-			
 			literatura.añadirEstante(estante1);
-			estante1.setProducto(libro1);
+			estante1.setProducto(new Libro("Cuentos de amor, de locura y muerte", "Planeta", "PaperBack", "Drama", "Horacio Quiroga", "Español", 1, 500.0));
 			
 			bob.entrarSucursal(corrientes, bob);
 			carlos.entrarSucursal(corrientes, carlos);
-			Tarjeta tarjeta = new Tarjeta(carlos, "Debito", 1111222233334444L, 310822, 343, 9000);
-			carlos.setTarjeta(tarjeta);
+			carlos.setTarjeta(new Tarjeta(carlos, "Debito", 1111222233334444L, 310822, 343, 9000));
 			
 			carlos.changeToPiso(corrientes, bob, 1);
 			
 			carlos.searchProductoInEstante(estante1, "Cuentos de amor, de locura y muerte");
 			carlos.changeToPiso(corrientes, bob, 0);
 			
-			bob.cobrar(carlos);
+			bob.cobrar(corrientes, carlos);
+			
+			carlos.consultarCuentaTarjeta();
 
 			carlos.salirSucursal(corrientes, carlos);
 			

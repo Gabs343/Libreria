@@ -14,6 +14,8 @@ public class Sucursal {
 	
 	private boolean abierto = false;
 	
+	private Caja caja;
+	
 	private Piso[] pisos; 
 	private ArrayList<Persona> personas = new ArrayList<Persona>();
 	//private ArrayList<Inventario> inventarios = new ArrayList<Inventario>();
@@ -28,6 +30,7 @@ public class Sucursal {
 		this.telefono = telefono;
 		this.mail = mail;
 		
+		caja = new Caja();
 		creandoPisos(cantidadPisos + 1);
 	}
 	
@@ -103,13 +106,13 @@ public class Sucursal {
 		return telefono;
 	}
 	
+	public Caja getCaja() {
+		return caja;
+	}
+	
 	public void getSectoresInPiso(int numeroPiso) {
 		System.out.println("Piso: " + pisos[numeroPiso].getNumero());
 		pisos[numeroPiso].getSector();	
 	}
 	
-	public void getEmpleadosInPiso(int numeroPiso) {
-		System.out.println("Piso: " + pisos[numeroPiso].getNumero());
-		pisos[numeroPiso].getPersona();
-	}
 }	

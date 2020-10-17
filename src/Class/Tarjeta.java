@@ -29,8 +29,7 @@ public class Tarjeta {
 			while(intentos < 4) {
 				int userInCodigo = 343;
 				if(codigoSeg == userInCodigo) {
-					saldo -= precioProducto;
-					System.out.println("Se desconto " + precioProducto + "de la cuenta de " + nombre);
+					descontarSaldo(precioProducto);
 					condicion = true;
 				}else {
 					System.out.println("Contraseña Erronea");
@@ -41,8 +40,7 @@ public class Tarjeta {
 			if(precioProducto > saldo) {
 				System.out.println("No tienes suficiente saldo en tu cuenta");
 			}else {
-				saldo -= precioProducto;
-				System.out.println("Se desconto " + precioProducto + " de tu cuenta");
+				descontarSaldo(precioProducto);
 				condicion = true;
 			}
 			
@@ -50,9 +48,17 @@ public class Tarjeta {
 		return condicion;
 	}
 	
+	private void descontarSaldo(double precio) {
+		saldo -= precio;
+		System.out.println("Se desconto " + precio + " de tu cuenta");
+	}
+	
 	public String getTipo() {
 		return tipo;
 	}
 	
+	public double getSaldo() {
+		return saldo;
+	}
 	
 }
