@@ -40,7 +40,7 @@ public class Main {
 			
 			carlos.changeToPiso(corrientes, bob, 1);
 			
-			carlos.searchProductoInEstante(estante1, "Cuentos de amor, de locura y muerte");
+			carlos.searchProductoInEstante(estante1, "It");
 			carlos.changeToPiso(corrientes, bob, 0);
 			
 			bob.cobrar(corrientes, carlos, corrientes.getCaja());
