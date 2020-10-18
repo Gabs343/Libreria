@@ -37,18 +37,18 @@ public class Empleado implements Persona{
 	}
 	
 	public void salirSucursal(Sucursal sucursal, Persona persona) {
-		sucursal.removePersona(persona);
+		sucursal.salirPersona(persona);
 		System.out.println(nombre + " salio de la sucursal " + sucursal.getDireccion());	
 	}
 	
 	public void changeToPiso(Sucursal sucursal, Persona persona, int piso) {
-		sucursal.removePersonaInPiso(persona);
+		sucursal.moverPersonaInPiso(persona);
 		sucursal.setPersonaInPiso(persona, piso);
 		System.out.println(nombre + " ingreso al piso " + piso);
 	}
 	
 	
-	public void cobrar(Sucursal sucursal, Publico publico) {
+	public void cobrar(Sucursal sucursal, Publico publico, Caja caja) {
 		System.out.println("1. Efectivo, 2. Tarjeta");
 		int ans = 2;
 		switch(ans) {
@@ -60,7 +60,7 @@ public class Empleado implements Persona{
 			break;
 		case 2:
 			metodoPagoTarjeta(publico, publico.getTarjeta());
-
+			caja.crearComprobante(publico, publico.getTarjeta(), getPrecioTotal(publico));
 			break;
 		default:
 			System.out.println("Debes elegir el método de pago");
@@ -84,8 +84,6 @@ public class Empleado implements Persona{
 			
 			escanearProductos(publico);
 			
-			crearComprobante(publico, tarjeta);
-			
 		}else {
 			System.out.println("La tarjeta no paso");
 		}	
@@ -107,14 +105,7 @@ public class Empleado implements Persona{
 		}
 	}
 	
-	private void crearComprobante(Publico publico, Tarjeta tarjeta) {
-		Random rnd = new Random();
-		int serial = rnd.nextInt(9000);
-		
-		String nombreCompleto = publico.getApellido() + " " + publico.getNombre();
-		
-		publico.setComprobante(new Comprobante(serial, nombreCompleto, 1, tarjeta.getTipo(), getPrecioTotal(publico)));
-	}
+	
 	
 	public String getCargo() {
 		return cargo;

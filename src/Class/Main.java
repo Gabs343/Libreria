@@ -32,7 +32,7 @@ public class Main {
 			corrientes.setSectorInPiso(1, historia);
 			
 			literatura.añadirEstante(estante1);
-			estante1.setProducto(new Libro("Cuentos de amor, de locura y muerte", "Planeta", "PaperBack", "Drama", "Horacio Quiroga", "Español", 1, 500.0));
+			estante1.setProducto(new Libro("Terror", "Stephen King", "It", 2.400));
 			
 			bob.entrarSucursal(corrientes, bob);
 			carlos.entrarSucursal(corrientes, carlos);
@@ -43,7 +43,7 @@ public class Main {
 			carlos.searchProductoInEstante(estante1, "Cuentos de amor, de locura y muerte");
 			carlos.changeToPiso(corrientes, bob, 0);
 			
-			bob.cobrar(corrientes, carlos);
+			bob.cobrar(corrientes, carlos, corrientes.getCaja());
 			
 			carlos.consultarCuentaTarjeta();
 

@@ -63,7 +63,7 @@ public class Sucursal {
 		pisos[0].setPersona(persona);
 	}
 
-	public void removePersona(Persona persona) {
+	public void salirPersona(Persona persona) {
 		for(int i = 0; i < personas.size(); i++) {
 			if(personas.get(i).getNombre().equalsIgnoreCase(persona.getNombre())) {
 				personas.remove(i);
@@ -76,7 +76,7 @@ public class Sucursal {
 		pisos[numeroPiso].setPersona(persona);
 	}
 	
-	public void removePersonaInPiso(Persona persona) {
+	public void moverPersonaInPiso(Persona persona) {
 		for(int i = 0; i < pisos.length; i++) {
 			pisos[i].removePersona(persona);
 		}
