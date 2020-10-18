@@ -123,9 +123,9 @@ public class Publico implements Persona{
 	}
 	
 	public Producto getProducto() {
-		Producto productoCopy = inventario.get(indexOfItem);
+		Producto productoEnviado = inventario.get(indexOfItem);
 		inventario.remove(indexOfItem);
-		return productoCopy;
+		return productoEnviado;
 	}
 	
 	public List<Producto> getInventario(){
