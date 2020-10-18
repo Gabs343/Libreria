@@ -51,7 +51,7 @@ public class Publico implements Persona{
 		}
 		
 		if(productosComprados == inventario.size()) {
-			sucursal.removePersona(persona);
+			sucursal.salirPersona(persona);
 			System.out.println(nombre + " salio de la sucursal " + sucursal.getDireccion());
 		}else {
 			System.out.println(nombre + " tiene productos sin comprar");
@@ -60,7 +60,7 @@ public class Publico implements Persona{
 	}
 	
 	public void changeToPiso(Sucursal sucursal, Persona persona, int piso) {
-		sucursal.removePersonaInPiso(persona);
+		sucursal.moverPersonaInPiso(persona);
 		sucursal.setPersonaInPiso(persona, piso);
 		System.out.println(nombre + " ingreso al piso " + piso);
 	}

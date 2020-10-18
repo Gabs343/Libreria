@@ -31,6 +31,7 @@ public class Tarjeta {
 				if(codigoSeg == userInCodigo) {
 					descontarSaldo(precioProducto);
 					condicion = true;
+					break;
 				}else {
 					System.out.println("Contraseña Erronea");
 					intentos++;
