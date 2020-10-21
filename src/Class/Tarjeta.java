@@ -1,5 +1,6 @@
 package Class;
 
+import dvlib.Dialogo;
 
 public class Tarjeta {
 	
@@ -27,19 +28,19 @@ public class Tarjeta {
 		if(tipo.equalsIgnoreCase("Credito")) {
 			int intentos = 0;
 			while(intentos < 4) {
-				int userInCodigo = 343;
+				int userInCodigo = Dialogo.ingresarEntero("Ingresa tu contraseña");
 				if(codigoSeg == userInCodigo) {
 					descontarSaldo(precioProducto);
 					condicion = true;
 					break;
 				}else {
-					System.out.println("Contraseña Erronea");
+					Dialogo.mostrar("Contraseña Erronea");
 					intentos++;
 				}
 			}
 		}else {
 			if(precioProducto > saldo) {
-				System.out.println("No tienes suficiente saldo en tu cuenta");
+				Dialogo.mostrar("No tienes suficiente saldo en tu cuenta");
 			}else {
 				descontarSaldo(precioProducto);
 				condicion = true;
@@ -51,7 +52,7 @@ public class Tarjeta {
 	
 	private void descontarSaldo(double precio) {
 		saldo -= precio;
-		System.out.println("Se desconto " + precio + " de tu cuenta");
+		Dialogo.mostrar("A " + nombre + " se le desconto " + precio + " de la cuenta");
 	}
 	
 	public String getTipo() {
