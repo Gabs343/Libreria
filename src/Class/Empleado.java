@@ -1,5 +1,6 @@
 package Class;
 
+import dvlib.Dialogo;
 import java.util.Random;
 
 public class Empleado implements Persona{
@@ -16,7 +17,7 @@ public class Empleado implements Persona{
 	}
 	
 	public void saludar() {
-		System.out.println("Hola mi nombre es " + nombre);
+		Dialogo.mostrar("Hola mi nombre es " + nombre);
 	}
 	
 	public void abrirSucursal(Sucursal sucursal, Empleado empleado) {
@@ -30,27 +31,26 @@ public class Empleado implements Persona{
 	public void entrarSucursal(Sucursal sucursal, Persona persona) {
 		if(sucursal.isOpen()) {
 			sucursal.setPersona(persona);
-			System.out.println(nombre + " entro a la sucursal de " + sucursal.getDireccion());
+			Dialogo.mostrar(nombre + " entro a la sucursal de " + sucursal.getDireccion());
 		} else {
-			System.out.println("Esta cerrado");
+			Dialogo.mostrar("Esta cerrado");
 		}
 	}
 	
 	public void salirSucursal(Sucursal sucursal, Persona persona) {
 		sucursal.salirPersona(persona);
-		System.out.println(nombre + " salio de la sucursal " + sucursal.getDireccion());	
+		Dialogo.mostrar(nombre + " salio de la sucursal " + sucursal.getDireccion());
 	}
 	
 	public void changeToPiso(Sucursal sucursal, Persona persona, int piso) {
 		sucursal.moverPersonaInPiso(persona);
 		sucursal.setPersonaInPiso(persona, piso);
-		System.out.println(nombre + " ingreso al piso " + piso);
+		Dialogo.mostrar(nombre + " ingreso al piso " + piso);
 	}
 	
 	
 	public void cobrar(Sucursal sucursal, Publico publico, Caja caja) {
-		System.out.println("1. Efectivo, 2. Tarjeta");
-		int ans = 2;
+		int ans = Dialogo.ingresarEntero("1. Efectivo, 2. Tarjeta");
 		switch(ans) {
 		case 1:
 			metodoPagoEfectivo(publico);
@@ -63,7 +63,7 @@ public class Empleado implements Persona{
 			caja.crearComprobante(publico, publico.getTarjeta(), getPrecioTotal(publico));
 			break;
 		default:
-			System.out.println("Debes elegir el método de pago");
+			Dialogo.mostrar("Debes elegir el método de pago");
 			break;	
 		}
 		
@@ -74,18 +74,17 @@ public class Empleado implements Persona{
 			publico.descontarSaldo(getPrecioTotal(publico));
 			escanearProductos(publico);
 		}else {
-			System.out.println(publico.getNombre() + " no tiene suficiente saldo");
+			Dialogo.mostrar(publico.getNombre() + " no tiene suficiente saldo");
 		}
 	}
 	
 	private void metodoPagoTarjeta(Publico publico, Tarjeta tarjeta) {
 		if(tarjeta.pasarTarjeta(getPrecioTotal(publico))) {
-			System.out.println(nombre + " le cobro a " + publico.getNombre() + " con exito");
-			
+			Dialogo.mostrar(nombre + " le cobro a " + publico.getNombre() + " con exito");
 			escanearProductos(publico);
 			
 		}else {
-			System.out.println("La tarjeta no paso");
+			Dialogo.mostrar("La tarjeta no paso");
 		}	
 	}
 	
