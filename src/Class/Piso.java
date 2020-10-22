@@ -33,7 +33,7 @@ public class Piso {
 	
 	public void getSector() {
 		sectores.stream().forEach((sector) -> {
-			System.out.println(sector.getCodigo());
+			System.out.println(sector.getNombre());
 		});
 	}
 	

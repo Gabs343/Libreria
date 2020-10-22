@@ -16,11 +16,11 @@ public class Main {
 		bob.abrirSucursal(corrientes, bob);
 		
 		if(corrientes.isOpen()) {
-			Sector matematica = new Sector("Matemática", "MAT");
-			Sector literatura = new Sector("Literatura", "LIT");
-			Sector historia = new Sector("Historia", "HIST");
-			Sector informatica = new Sector("Informática", "INFORM");
-			Sector caja = new Sector("Caja", "Caja");
+			Sector matematica = new Sector("Matemática");
+			Sector terror = new Sector("Terror");
+			Sector historia = new Sector("Historia");
+			Sector informatica = new Sector("Informática");
+			Sector caja = new Sector("Caja");
 			
 			Estante estante1 = new Estante("Madera", "Marrón", "Rectangular", 30, 89, 60);
 			Estante estante2 = new Estante("Madera", "Marrón", "Rectangular", 30, 60, 180);
@@ -28,10 +28,10 @@ public class Main {
 			corrientes.setSectorInPiso(0, caja);
 			corrientes.setSectorInPiso(0, matematica);
 			corrientes.setSectorInPiso(0, informatica);
-			corrientes.setSectorInPiso(1, literatura);
+			corrientes.setSectorInPiso(1, terror);
 			corrientes.setSectorInPiso(1, historia);
 			
-			literatura.añadirEstante(estante1);
+			terror.añadirEstante(estante1);
 			estante1.setProducto(new Libro("Terror", "Stephen King", "It", 2.400));
 			
 			bob.entrarSucursal(corrientes, bob);
