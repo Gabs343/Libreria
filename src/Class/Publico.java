@@ -34,9 +34,9 @@ public class Publico implements Persona{
 		comprobantes.add(comprobante);
 	}
 	
-	public void entrarSucursal(Sucursal sucursal, Persona persona) {
+	public void entrarSucursal(Sucursal sucursal) {
 		if(sucursal.isOpen()) {
-			sucursal.setPersona(persona);
+			sucursal.setPersonaInPiso(this, 0);
 			Dialogo.mostrar(nombre + " entro a la sucursal de " + sucursal.getDireccion());
 		} else {
 			Dialogo.mostrar("Esta cerrado");
@@ -44,7 +44,7 @@ public class Publico implements Persona{
 		}
 	}
 	
-	public void salirSucursal(Sucursal sucursal, Persona persona) {
+	public void salirSucursal(Sucursal sucursal) {
 		int productosComprados = 0;
 		for(int i = 0; i < inventario.size(); i++) {
 			if(inventario.get(i).isBought()) {
@@ -53,7 +53,7 @@ public class Publico implements Persona{
 		}
 		
 		if(productosComprados == inventario.size()) {
-			sucursal.salirPersona(persona);
+			sucursal.removerPersonaInPiso(this);
 			Dialogo.mostrar(nombre + " salio de la sucursal " + sucursal.getDireccion());
 		}else {
 			Dialogo.mostrar(nombre + " tiene productos sin comprar");
@@ -61,10 +61,18 @@ public class Publico implements Persona{
 		
 	}
 	
-	public void changeToPiso(Sucursal sucursal, Persona persona, int piso) {
-		sucursal.moverPersonaInPiso(persona);
-		sucursal.setPersonaInPiso(persona, piso);
+	public void changeToPiso(Sucursal sucursal, int piso) {
+		sucursal.removerPersonaInPiso(this);
+		sucursal.setPersonaInPiso(this, piso);
 		Dialogo.mostrar(nombre + " ingreso al piso " + piso);
+	}
+	
+	public void enterSector(Sector sector) {
+		sector.setPersona(this);
+	}
+	
+	public void exitSector(Sector sector) {
+		sector.removePersona(this);
 	}
 	
 	public void searchProductoInEstante(Estante estante, String nombreProducto) {
@@ -72,7 +80,7 @@ public class Publico implements Persona{
 			setProducto(estante.getProducto());
 			Dialogo.mostrar(nombre + " añadio el producto " + nombreProducto + " en su inventario");
 		}else {
-			Dialogo.mostrar(nombre +" no encontro el producto " + nombreProducto + "en el estante");
+			Dialogo.mostrar(nombre +" no encontro el producto " + nombreProducto + " en el estante");
 		}
 	}
 	
@@ -123,12 +131,6 @@ public class Publico implements Persona{
 	public void botarComprobante(int index) {
 		comprobantes.remove(index);
 		Dialogo.mostrar(nombre + " elimino el comprobante");
-	}
-	
-	public Producto getProducto() {
-		Producto productoEnviado = inventario.get(indexOfItem);
-		inventario.remove(indexOfItem);
-		return productoEnviado;
 	}
 	
 	public List<Producto> getInventario(){

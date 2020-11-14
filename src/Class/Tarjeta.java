@@ -18,8 +18,8 @@ public class Tarjeta {
 		this.fechaVcto = fechaVcto;
 		this.codigoSeg = codigoSeg;
 		this.saldo = saldo;
-		nombre = persona.getNombre();
-		apellido = persona.getApellido();
+		this.nombre = persona.getNombre();
+		this.apellido = persona.getApellido();
 		
 	}
 	
