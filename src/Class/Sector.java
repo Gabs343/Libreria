@@ -2,6 +2,8 @@ package Class;
 
 import java.util.ArrayList;
 
+import dvlib.Dialogo;
+
 public class Sector {
 	private String nombre;
 	
@@ -14,14 +16,12 @@ public class Sector {
 	
 	public void setPersona(Persona persona) {
 		personas.add(persona);
+		Dialogo.mostrar(persona.getNombre() + " entro al sector: " + nombre);
 	}
 	
 	public void removePersona(Persona persona) {
-		for(int i = 0; i < personas.size(); i++) {
-			if(personas.get(i).getNombre().equals(persona.getNombre())) {
-				personas.remove(i);	
-			}
-		}
+		personas.removeIf((p) -> p.getNombre() == nombre);
+		Dialogo.mostrar(persona.getNombre() + " salio del sector: " + nombre);
 	}
 	
 	public void añadirEstante(Estante estante) {
@@ -30,5 +30,9 @@ public class Sector {
 	
 	public String getNombre() {
 		return nombre;
+	}
+	
+	public Estante getEstante(int numero) {
+		return estantes.get(numero - 1);
 	}
 }

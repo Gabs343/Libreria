@@ -5,9 +5,9 @@ public interface Persona {
 	
 	public String getApellido();
 	
-	public void entrarSucursal(Sucursal sucursal, Persona persona);
+	public void entrarSucursal(Sucursal sucursal);
 
-	public void salirSucursal(Sucursal sucursal, Persona persona);
+	public void salirSucursal(Sucursal sucursal);
 
-	public void changeToPiso(Sucursal sucursal, Persona persona, int piso);
+	public void changeToPiso(Sucursal sucursal, int piso);
 }

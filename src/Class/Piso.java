@@ -19,25 +19,29 @@ public class Piso {
 		personas.add(persona);
 	}
 	
-	public void removePersona(Persona persona) {
-		for(int i = 0; i < personas.size(); i++) {
-			if(personas.get(i).getNombre().equals(persona.getNombre())) {
-				personas.remove(i);	
-			}
-		}
+	public void removePersona(String nombre) {
+		personas.removeIf((p) -> p.getNombre() == nombre);
 	}
 	
 	public int getNumero() {
 		return numero;
 	}
 	
-	public void getSector() {
+	public Sector getSector(String nombreSector) {
+		for (Sector sector: sectores) {
+			if(sector.getNombre().equalsIgnoreCase(nombreSector)) {
+				return sector;
+			}
+		}
+		return null;
+	}
+	public void getSectores() {
 		sectores.stream().forEach((sector) -> {
 			System.out.println(sector.getNombre());
 		});
 	}
 	
-	public void getPersona() {
+	public void getPersonas() {
 		personas.stream().forEach((persona) -> {
 			System.out.println(persona.getNombre());
 		});

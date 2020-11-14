@@ -17,9 +17,6 @@ public class Sucursal {
 	private Caja caja;
 	
 	private Piso[] pisos; 
-	private ArrayList<Persona> personas = new ArrayList<Persona>();
-	//private ArrayList<Inventario> inventarios = new ArrayList<Inventario>();
-	
 	
 	public Sucursal(String localidad, String direccion, int numeroDireccion, int codigoPostal, int cantidadPisos, int telefono, String mail) {
 		this.localidad = localidad;
@@ -46,8 +43,8 @@ public class Sucursal {
 		return abierto;
 	}
 	
-	public void cambiarEstado(Empleado empleado, boolean abierto) {
-		if(empleado.getCargo().equalsIgnoreCase("Encargado")) {
+	public void cambiarEstado(String cargoEmpleado, boolean abierto) {
+		if(cargoEmpleado.equalsIgnoreCase("Encargado")) {
 			this.abierto = abierto;
 		}else {
 			System.out.println("No eres el encargado");
@@ -57,29 +54,19 @@ public class Sucursal {
 	public void setSectorInPiso(int numero, Sector sector) {
 		pisos[numero].setSector(sector);
 	}
-
-	public void setPersona(Persona persona) {
-		personas.add(persona);
-		pisos[0].setPersona(persona);
-	}
-
-	public void salirPersona(Persona persona) {
-		for(int i = 0; i < personas.size(); i++) {
-			if(personas.get(i).getNombre().equalsIgnoreCase(persona.getNombre())) {
-				personas.remove(i);
-				
-			}
-		}
-	}
 	
 	public void setPersonaInPiso(Persona persona, int numeroPiso) {
 		pisos[numeroPiso].setPersona(persona);
 	}
 	
-	public void moverPersonaInPiso(Persona persona) {
+	public void removerPersonaInPiso(Persona persona) {
 		for(int i = 0; i < pisos.length; i++) {
-			pisos[i].removePersona(persona);
+			pisos[i].removePersona(persona.getNombre());
 		}
+	}
+	
+	public void setEstanteInSector(int piso, String sector, Estante estante) {
+		pisos[piso].getSector(sector).añadirEstante(estante);
 	}
 	
 	public String getLocalidad() {
@@ -110,9 +97,14 @@ public class Sucursal {
 		return caja;
 	}
 	
+	public Piso getPiso(int numero) {
+		return pisos[numero];
+	}
+	
 	public void getSectoresInPiso(int numeroPiso) {
 		System.out.println("Piso: " + pisos[numeroPiso].getNumero());
-		pisos[numeroPiso].getSector();	
+		pisos[numeroPiso].getSectores();	
 	}
+
 	
 }	

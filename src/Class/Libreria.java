@@ -16,6 +16,15 @@ public class Libreria {
 		sucursales.add(sucursal);
 	}
 	
+	public Sucursal getSucursal(String Direccion) {
+		for (Sucursal sc: sucursales) {
+			if(sc.getDireccion().equalsIgnoreCase(Direccion)) {
+				return sc;
+			}
+		}
+		return null;
+	}
+	
 	public void getSucursales() {
 		sucursales.stream().forEach((sucursal) -> {
 			System.out.println("Localidad: " + sucursal.getLocalidad());

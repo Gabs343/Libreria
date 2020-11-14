@@ -1,7 +1,6 @@
 package Class;
 
 import dvlib.Dialogo;
-import java.util.Random;
 
 public class Empleado implements Persona{
 	private String nombre;
@@ -20,31 +19,31 @@ public class Empleado implements Persona{
 		Dialogo.mostrar("Hola mi nombre es " + nombre);
 	}
 	
-	public void abrirSucursal(Sucursal sucursal, Empleado empleado) {
-		sucursal.cambiarEstado(empleado, true);
+	public void abrirSucursal(Sucursal sucursal) {
+		sucursal.cambiarEstado(cargo, true);
 	}
 	
-	public void cerrarSucursal(Sucursal sucursal, Empleado empleado) {
-		sucursal.cambiarEstado(empleado, false);
+	public void cerrarSucursal(Sucursal sucursal) {
+		sucursal.cambiarEstado(cargo, false);
 	}
 	
-	public void entrarSucursal(Sucursal sucursal, Persona persona) {
+	public void entrarSucursal(Sucursal sucursal) {
 		if(sucursal.isOpen()) {
-			sucursal.setPersona(persona);
+			sucursal.setPersonaInPiso(this, 0);
 			Dialogo.mostrar(nombre + " entro a la sucursal de " + sucursal.getDireccion());
 		} else {
 			Dialogo.mostrar("Esta cerrado");
 		}
 	}
 	
-	public void salirSucursal(Sucursal sucursal, Persona persona) {
-		sucursal.salirPersona(persona);
+	public void salirSucursal(Sucursal sucursal) {
+		sucursal.removerPersonaInPiso(this);
 		Dialogo.mostrar(nombre + " salio de la sucursal " + sucursal.getDireccion());
 	}
 	
-	public void changeToPiso(Sucursal sucursal, Persona persona, int piso) {
-		sucursal.moverPersonaInPiso(persona);
-		sucursal.setPersonaInPiso(persona, piso);
+	public void changeToPiso(Sucursal sucursal, int piso) {
+		sucursal.removerPersonaInPiso(this);
+		sucursal.setPersonaInPiso(this, piso);
 		Dialogo.mostrar(nombre + " ingreso al piso " + piso);
 	}
 	
@@ -103,8 +102,6 @@ public class Empleado implements Persona{
 			publico.getInventario().get(i).setPurchase();
 		}
 	}
-	
-	
 	
 	public String getCargo() {
 		return cargo;
