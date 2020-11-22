@@ -32,7 +32,21 @@ public class Sector {
 		return nombre;
 	}
 	
+	public int getEstantes() {
+		return estantes.size();
+	}
+	
 	public Estante getEstante(int numero) {
 		return estantes.get(numero - 1);
+	}
+	
+	public String getPersona() {
+		String nombre = "";
+		for(Persona prs : personas) {
+			
+				nombre = prs.getNombre();
+			
+		}
+		return nombre;
 	}
 }

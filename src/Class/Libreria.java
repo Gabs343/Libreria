@@ -25,14 +25,13 @@ public class Libreria {
 		return null;
 	}
 	
-	public void getSucursales() {
-		sucursales.stream().forEach((sucursal) -> {
-			System.out.println("Localidad: " + sucursal.getLocalidad());
-			System.out.println("Dirección: " + sucursal.getDireccion() + " " + sucursal.getNumeroDireccion());
-			System.out.println("Codigo Postal: " + sucursal.getCodigoPostal());
-			System.out.println("Mail: " + sucursal.getMail());
-			System.out.println("Telefono: " + sucursal.getTelefono() +"\n");
-		});
+	public String getSucursales() {
+		String listaSucursales = "";
+		for (Sucursal sc : sucursales) {
+			listaSucursales = listaSucursales.concat("* " + sc.getDireccion() + " ");
+		}
+		
+		return listaSucursales;
 		
 	}
 	

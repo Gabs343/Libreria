@@ -101,9 +101,8 @@ public class Sucursal {
 		return pisos[numero];
 	}
 	
-	public void getSectoresInPiso(int numeroPiso) {
-		System.out.println("Piso: " + pisos[numeroPiso].getNumero());
-		pisos[numeroPiso].getSectores();	
+	public int getPisos() {
+		return pisos.length - 1;
 	}
 
 	

@@ -7,7 +7,6 @@ import java.util.ArrayList;
 public class Publico implements Persona{
 	private String nombre;
 	private String apellido;
-	private String gusto;
 	private int indexOfItem;
 	private Tarjeta tarjeta;
 	private double saldo;
@@ -15,10 +14,9 @@ public class Publico implements Persona{
 	private List <Producto> inventario = new ArrayList<Producto>();
 	private List <Comprobante> comprobantes = new ArrayList<Comprobante>();
 	
-	public Publico(String nombre, String apellido, String gusto, double saldo) {
+	public Publico(String nombre, String apellido, double saldo) {
 		this.nombre = nombre;
 		this.apellido = apellido;
-		this.gusto = gusto;
 		this.saldo = saldo;
 	}
 	

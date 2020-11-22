@@ -6,6 +6,8 @@ public interface Producto {
 	
 	public String getNombre();
 	
+	public String getAutor();
+	
 	public double getPrecio();
 	
 	public boolean isBought();

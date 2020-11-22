@@ -35,16 +35,13 @@ public class Piso {
 		}
 		return null;
 	}
-	public void getSectores() {
-		sectores.stream().forEach((sector) -> {
-			System.out.println(sector.getNombre());
-		});
-	}
-	
-	public void getPersonas() {
-		personas.stream().forEach((persona) -> {
-			System.out.println(persona.getNombre());
-		});
+	public String getSectores() {
+		String listaSectores = "";
+		for (Sector sct : sectores) {
+			listaSectores = listaSectores.concat("\n* " + sct.getNombre() + " ");
+		}
+		
+		return listaSectores;
 	}
 	
 }

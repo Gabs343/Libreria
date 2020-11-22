@@ -30,7 +30,7 @@ public class Empleado implements Persona{
 	public void entrarSucursal(Sucursal sucursal) {
 		if(sucursal.isOpen()) {
 			sucursal.setPersonaInPiso(this, 0);
-			Dialogo.mostrar(nombre + " entro a la sucursal de " + sucursal.getDireccion());
+			/*Dialogo.mostrar(nombre + " entro a la sucursal de " + sucursal.getDireccion());*/
 		} else {
 			Dialogo.mostrar("Esta cerrado");
 		}
