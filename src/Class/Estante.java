@@ -38,6 +38,15 @@ public class Estante {
 		return condicion;
 	}
 	
+	public String getProductos() {
+		String listaProductos = "";
+		for (Producto pt : productos) {
+			listaProductos = listaProductos.concat("\n* " + pt.getNombre() + " " + pt.getAutor() +" $" + pt.getPrecio());
+		}
+		
+		return listaProductos;
+		
+	}	
 	public Producto getProducto() {
 		Producto productoEnviado = productos.get(indexOfProducto);
 		productos.remove(indexOfProducto);

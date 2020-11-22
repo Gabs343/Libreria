@@ -22,6 +22,10 @@ public class Libro implements Producto{
 		return nombre;
 	}
 	
+	public String getAutor() {
+		return autor;
+	}
+	
 	public double getPrecio() {
 		return precio;
 	}
