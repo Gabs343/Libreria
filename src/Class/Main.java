@@ -61,7 +61,7 @@ public class Main {
 				
 				libreria1.getSucursal(nombreSucursal).setEstanteInSector(0, "Astronomía", new Estante("Madera", "Marrón", "Rectangular", 30, 89, 60));
 				
-				libreria1.getSucursal(nombreSucursal).getPiso(0).getSector("Matemática").getEstante(1).setProducto(new Libro("Astronomía", "Gabriel López", "¿Como ir a la luna?", 343));
+				libreria1.getSucursal(nombreSucursal).getPiso(0).getSector("Astronomía").getEstante(1).setProducto(new Libro("Astronomía", "Gabriel López", "¿Como ir a la luna?", 343));
 				break;
 			}
 			
@@ -127,6 +127,8 @@ public class Main {
 			
 			bob.salirSucursal(libreria1.getSucursal(nombreSucursal));
 			bob.cerrarSucursal(libreria1.getSucursal(nombreSucursal));
+			
+			
 
 		}
 	}

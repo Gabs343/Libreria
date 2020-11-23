@@ -49,22 +49,26 @@ public class Empleado implements Persona{
 	
 	
 	public void cobrar(Sucursal sucursal, Publico publico, Caja caja) {
-		int ans = Dialogo.ingresarEntero("1. Efectivo, 2. Tarjeta");
-		switch(ans) {
-		case 1:
-			metodoPagoEfectivo(publico);
-			sucursal.getCaja().changeEstado(true);
-			sucursal.getCaja().ingresar(getPrecioTotal(publico));
-			sucursal.getCaja().changeEstado(false);
-			break;
-		case 2:
-			metodoPagoTarjeta(publico, publico.getTarjeta());
-			caja.crearComprobante(publico, publico.getTarjeta(), getPrecioTotal(publico));
-			break;
-		default:
-			Dialogo.mostrar("Debes elegir el método de pago");
-			break;	
-		}
+		int ans;
+		do {
+			ans = Dialogo.ingresarEntero("1. Efectivo, 2. Tarjeta");
+			switch(ans) {
+			case 1:
+				metodoPagoEfectivo(publico);
+				sucursal.getCaja().changeEstado(true);
+				sucursal.getCaja().ingresar(getPrecioTotal(publico));
+				sucursal.getCaja().changeEstado(false);
+				break;
+			case 2:
+				metodoPagoTarjeta(publico, publico.getTarjeta());
+				caja.crearComprobante(publico, publico.getTarjeta(), getPrecioTotal(publico));
+				break;
+			default:
+				Dialogo.mostrar("Debes elegir el método de pago");
+				break;	
+			}
+		}while(ans != 1 && ans != 2);
+		
 		
 	}
 	
