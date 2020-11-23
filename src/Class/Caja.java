@@ -25,12 +25,6 @@ public class Caja {
 		saldo += precio;
 	}
 	
-	
-	
-	public void calcular() {
-		
-	}
-	
 
 	
 }

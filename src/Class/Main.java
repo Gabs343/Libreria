@@ -11,7 +11,7 @@ public class Main {
 		
 		Empleado bob = new Empleado("Bob", "Gónzalez", "Encargado", 343);
 		Publico carlos = new Publico("Carlos", "Lopez", 0);
-		carlos.setTarjeta(new Tarjeta(carlos, "Debito", 1111222233334444L, 310822, 343, 9000));
+		carlos.setTarjeta("Debito", 1111222233334444L, 310822, 343, 15000);
 		
 		String irALibreria = Dialogo.ingresarCadena("¿Quieres ir a una libreria? Y/N");
 		
@@ -66,6 +66,7 @@ public class Main {
 			}
 			
 			carlos.entrarSucursal(libreria1.getSucursal(nombreSucursal));
+			bob.saludar();
 			
 			int numeroDePiso = 0;
 			String nombreSector = Dialogo.ingresarCadena("En este piso cuentas con los sectores" + libreria1.getSucursal(nombreSucursal).getPiso(numeroDePiso).getSectores() + "\n* Escaleras\n* Salir. \nEscribe al lugar a donde quieres ir");
@@ -128,7 +129,8 @@ public class Main {
 			bob.salirSucursal(libreria1.getSucursal(nombreSucursal));
 			bob.cerrarSucursal(libreria1.getSucursal(nombreSucursal));
 			
-			
+			carlos.getProductos();
+			carlos.consultarCuentaTarjeta();
 
 		}
 	}

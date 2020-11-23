@@ -16,7 +16,7 @@ public class Empleado implements Persona{
 	}
 	
 	public void saludar() {
-		Dialogo.mostrar("Hola mi nombre es " + nombre);
+		Dialogo.mostrar("Hola mi nombre es " + nombre + " y te doy la bienvenida a la libreria");
 	}
 	
 	public void abrirSucursal(Sucursal sucursal) {
