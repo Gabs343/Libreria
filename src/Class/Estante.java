@@ -41,7 +41,7 @@ public class Estante {
 	public String getProductos() {
 		String listaProductos = "";
 		for (Producto pt : productos) {
-			listaProductos = listaProductos.concat("\n* " + pt.getNombre() + " " + pt.getAutor() +" $" + pt.getPrecio());
+			listaProductos = listaProductos.concat("\n* " + pt.getNombre() + " - " + pt.getAutor() +" - $" + pt.getPrecio());
 		}
 		
 		return listaProductos;

@@ -43,9 +43,7 @@ public class Sector {
 	public String getPersona() {
 		String nombre = "";
 		for(Persona prs : personas) {
-			
-				nombre = prs.getNombre();
-			
+			nombre = prs.getNombre();
 		}
 		return nombre;
 	}
