@@ -24,8 +24,8 @@ public class Publico implements Persona{
 		inventario.add(producto);
 	}
 	
-	public void setTarjeta(Tarjeta tarjeta) {
-		this.tarjeta = tarjeta; 
+	public void setTarjeta(String tipo, long numero, int fechaVcto, int codigoSeg, double saldo) {
+		this.tarjeta = new Tarjeta(this, tipo, numero, fechaVcto, codigoSeg, saldo); 
 	}
 	
 	public void setComprobante(Comprobante comprobante) {
@@ -134,6 +134,16 @@ public class Publico implements Persona{
 	public List<Producto> getInventario(){
 		return this.inventario;
 	}
+	
+	public void getProductos() {
+		String listaProductos = "";
+		for (Producto inv : inventario) {
+			listaProductos = listaProductos.concat("Tienes estos productos en tu inventario.\n* " + inv.getNombre() + " ");
+		}
+		
+		Dialogo.mostrar(listaProductos);
+	}
+	
 	
 	public Tarjeta getTarjeta() {
 		return tarjeta;
