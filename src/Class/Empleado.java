@@ -62,6 +62,7 @@ public class Empleado implements Persona{
 			case 2:
 				metodoPagoTarjeta(publico, publico.getTarjeta());
 				caja.crearComprobante(publico, publico.getTarjeta(), getPrecioTotal(publico));
+				Dialogo.mostrar("Se generó el comprobante de manera exitosa y se le entregó a carlos");
 				break;
 			default:
 				Dialogo.mostrar("Debes elegir el método de pago");
