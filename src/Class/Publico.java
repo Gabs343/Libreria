@@ -136,9 +136,9 @@ public class Publico implements Persona{
 	}
 	
 	public void getProductos() {
-		String listaProductos = "";
+		String listaProductos = "Tienes estos productos en tu inventario.";
 		for (Producto inv : inventario) {
-			listaProductos = listaProductos.concat("Tienes estos productos en tu inventario.\n* " + inv.getNombre() + " ");
+			listaProductos = listaProductos.concat("\n* " + inv.getNombre() + " ");
 		}
 		
 		Dialogo.mostrar(listaProductos);
